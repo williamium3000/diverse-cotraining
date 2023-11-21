@@ -1,0 +1,1 @@
+/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/md5cmp.dir/md5cmp.c.o CMakeFiles/md5cmp.dir/md5.c.o CMakeFiles/md5cmp.dir/md5hl.c.o  -o md5cmp -rdynamic 

@@ -1,0 +1,23 @@
+# arguments for dataset
+dataset: pascal
+nclass: 21
+crop_size: 513
+data_root: data/VOC
+
+# arguments for training
+epochs: 80
+batch_size: 2
+lr: 0.002  # 8GPUs
+lr_multi: 10.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.0
+optim: SGD
+# arguments for backbone
+backbone: mit-b3
+# arguments for decode head
+decode_head: SegformerHead
+in_channels: [64, 128, 320, 512]
+channels: 256

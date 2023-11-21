@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/jinclude.h
+jconfig.h
+/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/jconfig.h
+stddef.h
+-
+stdlib.h
+-
+sys/types.h
+-
+stdio.h
+-
+strings.h
+-
+string.h
+-
+
+/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/wrjpgcom.c
+jinclude.h
+/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/jinclude.h
+ctype.h
+-
+fcntl.h
+-
+io.h
+-
+SIOUX.h
+-
+console.h
+-
+console.h
+-
+
+jconfig.h
+

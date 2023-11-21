@@ -1,0 +1,455 @@
+The system is: Linux - 5.4.0-122-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_08c72/fast"
+/usr/bin/make -f CMakeFiles/cmTC_08c72.dir/build.make CMakeFiles/cmTC_08c72.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_08c72.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_08c72.dir/testCCompiler.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_08c72
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_08c72.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_08c72.dir/testCCompiler.c.o  -o cmTC_08c72 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_45c83/fast"
+/usr/bin/make -f CMakeFiles/cmTC_45c83.dir/build.make CMakeFiles/cmTC_45c83.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_45c83
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45c83.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o  -o cmTC_45c83 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.11' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.11) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_45c83' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFRPz0m.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_45c83 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_45c83/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_45c83.dir/build.make CMakeFiles/cmTC_45c83.dir/build]
+  ignore line: [make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_45c83]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45c83.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o  -o cmTC_45c83 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.11' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.11) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_45c83' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFRPz0m.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_45c83 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccFRPz0m.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_45c83] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
+    arg [CMakeFiles/cmTC_45c83.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5] ==> [/usr/lib/gcc/x86_64-linux-gnu/5]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> [/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/5;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ce4bb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ce4bb.dir/build.make CMakeFiles/cmTC_ce4bb.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ce4bb.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_ce4bb.dir/feature_tests.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_ce4bb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce4bb.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_ce4bb.dir/feature_tests.c.o  -o cmTC_ce4bb -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_15e72/fast"
+/usr/bin/make -f CMakeFiles/cmTC_15e72.dir/build.make CMakeFiles/cmTC_15e72.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_15e72.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_15e72.dir/feature_tests.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_15e72
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_15e72.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_15e72.dir/feature_tests.c.o  -o cmTC_15e72 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c0b50/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c0b50.dir/build.make CMakeFiles/cmTC_c0b50.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c0b50.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_c0b50.dir/feature_tests.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_c0b50
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0b50.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_c0b50.dir/feature_tests.c.o  -o cmTC_c0b50 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_03014/fast"
+/usr/bin/make -f CMakeFiles/cmTC_03014.dir/build.make CMakeFiles/cmTC_03014.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_03014.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_03014.dir/CheckIncludeFile.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_03014
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_03014.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_03014.dir/CheckIncludeFile.c.o  -o cmTC_03014 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2dfca/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2dfca.dir/build.make CMakeFiles/cmTC_2dfca.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2dfca.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_2dfca.dir/CheckIncludeFile.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2dfca
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2dfca.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_2dfca.dir/CheckIncludeFile.c.o  -o cmTC_2dfca -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_048b4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_048b4.dir/build.make CMakeFiles/cmTC_048b4.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_048b4.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_048b4.dir/CheckIncludeFile.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_048b4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_048b4.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_048b4.dir/CheckIncludeFile.c.o  -o cmTC_048b4 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of size_t passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9b761/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9b761.dir/build.make CMakeFiles/cmTC_9b761.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9b761.dir/SIZE_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_9b761.dir/SIZE_T.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CheckTypeSize/SIZE_T.c
+Linking C executable cmTC_9b761
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9b761.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_9b761.dir/SIZE_T.c.o  -o cmTC_9b761 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned long passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b6714/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b6714.dir/build.make CMakeFiles/cmTC_b6714.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b6714.dir/UNSIGNED_LONG.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_b6714.dir/UNSIGNED_LONG.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CheckTypeSize/UNSIGNED_LONG.c
+Linking C executable cmTC_b6714
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b6714.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b6714.dir/UNSIGNED_LONG.c.o  -o cmTC_b6714 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_BUILTIN_CTZL succeeded with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b3f28/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b3f28.dir/build.make CMakeFiles/cmTC_b3f28.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b3f28.dir/src.c.o
+/usr/bin/cc    -DHAVE_BUILTIN_CTZL   -o CMakeFiles/cmTC_b3f28.dir/src.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_b3f28
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3f28.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_BUILTIN_CTZL    CMakeFiles/cmTC_b3f28.dir/src.c.o  -o cmTC_b3f28 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(int argc, char **argv) { unsigned long a = argc;  return __builtin_ctzl(a); }
+Determining if files locale.h exist passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f77ff/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f77ff.dir/build.make CMakeFiles/cmTC_f77ff.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f77ff.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_f77ff.dir/CheckIncludeFiles.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_f77ff
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f77ff.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_f77ff.dir/CheckIncludeFiles.c.o  -o cmTC_f77ff -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files stdlib.h exist passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e70dd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e70dd.dir/build.make CMakeFiles/cmTC_e70dd.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e70dd.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_e70dd.dir/CheckIncludeFiles.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_e70dd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e70dd.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_e70dd.dir/CheckIncludeFiles.c.o  -o cmTC_e70dd -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/types.h exist passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ce3c6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ce3c6.dir/build.make CMakeFiles/cmTC_ce3c6.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ce3c6.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_ce3c6.dir/CheckIncludeFiles.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_ce3c6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce3c6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_ce3c6.dir/CheckIncludeFiles.c.o  -o cmTC_ce3c6 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the memset exist passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1c47a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1c47a.dir/build.make CMakeFiles/cmTC_1c47a.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1c47a.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_1c47a.dir/CheckSymbolExists.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_1c47a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c47a.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_1c47a.dir/CheckSymbolExists.c.o  -o cmTC_1c47a -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+File /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef memset
+  return ((int*)(&memset))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the memcpy exist passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f57e6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f57e6.dir/build.make CMakeFiles/cmTC_f57e6.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f57e6.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_f57e6.dir/CheckSymbolExists.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_f57e6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f57e6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_f57e6.dir/CheckSymbolExists.c.o  -o cmTC_f57e6 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+File /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef memcpy
+  return ((int*)(&memcpy))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining size of unsigned char passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6d0aa/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6d0aa.dir/build.make CMakeFiles/cmTC_6d0aa.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6d0aa.dir/UNSIGNED_CHAR.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_6d0aa.dir/UNSIGNED_CHAR.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CheckTypeSize/UNSIGNED_CHAR.c
+Linking C executable cmTC_6d0aa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d0aa.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_6d0aa.dir/UNSIGNED_CHAR.c.o  -o cmTC_6d0aa -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a66b7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a66b7.dir/build.make CMakeFiles/cmTC_a66b7.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a66b7.dir/UNSIGNED_SHORT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_a66b7.dir/UNSIGNED_SHORT.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CheckTypeSize/UNSIGNED_SHORT.c
+Linking C executable cmTC_a66b7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a66b7.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_a66b7.dir/UNSIGNED_SHORT.c.o  -o cmTC_a66b7 -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test INCOMPLETE_TYPES succeeded with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6910d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6910d.dir/build.make CMakeFiles/cmTC_6910d.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6910d.dir/src.c.o
+/usr/bin/cc    -DINCOMPLETE_TYPES   -o CMakeFiles/cmTC_6910d.dir/src.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6910d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6910d.dir/link.txt --verbose=1
+/usr/bin/cc   -DINCOMPLETE_TYPES    CMakeFiles/cmTC_6910d.dir/src.c.o  -o cmTC_6910d -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { typedef struct undefined_structure *undef_struct_ptr;  undef_struct_ptr ptr = 0;  return ptr != 0; }
+Performing C SOURCE FILE Test INLINE_WORKS succeeded with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fbd0d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fbd0d.dir/build.make CMakeFiles/cmTC_fbd0d.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fbd0d.dir/src.c.o
+/usr/bin/cc    -DINLINE_WORKS   -o CMakeFiles/cmTC_fbd0d.dir/src.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_fbd0d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fbd0d.dir/link.txt --verbose=1
+/usr/bin/cc   -DINLINE_WORKS    CMakeFiles/cmTC_fbd0d.dir/src.c.o  -o cmTC_fbd0d -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+__inline__ __attribute__((always_inline)) static int foo(void) { return 0; } int main(void) { return foo(); }
+Performing C SOURCE FILE Test HAVE_VERSION_SCRIPT succeeded with the following output:
+Change Dir: /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_56a9b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_56a9b.dir/build.make CMakeFiles/cmTC_56a9b.dir/build
+make[1]: Entering directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_56a9b.dir/src.c.o
+/usr/bin/cc    -DHAVE_VERSION_SCRIPT -Wl,--version-script,/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/conftest.map   -o CMakeFiles/cmTC_56a9b.dir/src.c.o   -c /experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_56a9b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56a9b.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_VERSION_SCRIPT -Wl,--version-script,/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/conftest.map    CMakeFiles/cmTC_56a9b.dir/src.c.o  -o cmTC_56a9b -rdynamic 
+make[1]: Leaving directory '/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
