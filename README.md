@@ -143,3 +143,16 @@ In order to run on different labeled data partitions or different datasets, plea
 
 Modify the py file to ``supervised.py`` in the script, and double the ``batch_size`` in the configuration file if you use the same number of GPUs as semi-supervised setting (no need to change ``lr``). 
 
+
+## Citation
+If you find this project useful, please consider citing:
+```bibtex
+@InProceedings{Li_2023_ICCV,
+    author    = {Li, Yijiang and Wang, Xinjiang and Yang, Lihe and Feng, Litong and Zhang, Wayne and Gao, Ying},
+    title     = {Diverse Cotraining Makes Strong Semi-Supervised Segmentor},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {16055-16067}
+}
+```
