@@ -14,6 +14,6 @@ python -m torch.distributed.launch \
     --nproc_per_node=$1 \
     --master_addr=localhost \
     --master_port=$2 \
-    3ps_st_dct.py --thr $4 \
+    diverse_cotraining_3cps.py --thr $4 \
     --config=$config --config2=$config2 --config3=$config3 --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $2 2>&1 | tee $save_path/$now.txt

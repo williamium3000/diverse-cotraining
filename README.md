@@ -88,17 +88,34 @@ We will release the checkpoints later.
 ### Installation
 
 ```bash
-conda create -n cotraining python=3.6.9
+conda create -n cotraining python=3.7
 conda activate cotraining
+pip install torch torchvision torchaudio
 pip install -r requirements.txt
-pip install pip install torch==1.8.1+cu102 torchvision==0.9.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
-The code for DCT transform is already in the repo (libjpeg-turbo-2.0.3), thus no more installation is needed. However, for more details regarding installation from scratch, we refer to [DCTNet](https://github.com/kaixu-zen/DCTNet) and [jpeg2dct](https://github.com/uber-research/jpeg2dct).
+We use implementation of SegFormer from mmseg, so installation of mmcv and mmsegmentation libraries is needed
+
+```bash
+pip install openmim
+mim install mmcv
+pip install mmsegmentation
+```
+
+Proprosessing of DCT domain requires jpeg2dct and PyTurboJPEG libraries.
+Before installing jpeg2dct, first install either [libjpeg](https://libjpeg.sourceforge.net/) or [libjpeg-turbo](https://libjpeg-turbo.org/) library. 
+
+```bash
+apt install libjpeg-turbo
+pip install jpeg2dct PyTurboJPEG
+```
+For more details regarding the installation of jpeg2dct, we refer to [jpeg2dct](https://github.com/uber-research/jpeg2dct).
+We also refer to [DCTNet](https://github.com/kaixu-zen/DCTNet) for more details of DCT transform.
 
 ### Pretrained Backbone:
+We provide the pretrain as followed:
 
-[ResNet-50](https://drive.google.com/file/d/1-_U293pmtEt2NOba5cIbq98UTfgGwdZM/view?usp=drive_link) | [ResNet-101](https://drive.google.com/file/d/1-X_-Sa7uTq3xwlxAadi-QkPwGx7EIVHK/view?usp=drive_link) | [ResNet-50-dct](https://drive.google.com/file/d/1WTnbvLHRUYgXOW0wae91fAwU3C9lAiBA/view?usp=drive_link) | [ResNet-101-dct](https://drive.google.com/file/d/1pFIGmwaPAobPUiFV7sQ_mWcp4fBu1oxY/view?usp=drive_link)
+[ResNet-50](https://drive.google.com/file/d/1-kNZxhBfTnOc4V2yBaegvfhmVBWh1ByV/view?usp=drive_link) | [ResNet-101](https://drive.google.com/file/d/1-bybHiZGvnLaH0JF7qZ81uPa9rEW53s2/view?usp=drive_link) | [ResNet-50-dct](https://drive.google.com/file/d/1-l4TWQSJIw3gP6_hSZezj91_RfuZpbQN/view?usp=drive_link) | [ResNet-101-dct](https://drive.google.com/file/d/1-jI4fsGs3oCbt5Idh-aV2x9xsQJXIUUj/view?usp=drive_link)
 
 ```
 ├── ./pretrained
@@ -108,6 +125,7 @@ The code for DCT transform is already in the repo (libjpeg-turbo-2.0.3), thus no
     └── resnet101_dct.pth
 ```
 
+**Note**: the ResNet variants all use official weights and we have pretrained dct resnet with comparable performance as ResNet couterparts. More details can be found in our paper.
 ### Dataset:
 
 - Pascal: [JPEGImages](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar) | [SegmentationClass](https://drive.google.com/file/d/1ikrDlsai5QSf2GiSUR3f8PZUzyTubcuF/view?usp=sharing)
@@ -133,6 +151,8 @@ The code for DCT transform is already in the repo (libjpeg-turbo-2.0.3), thus no
 sh <script> <num_gpu> <port> <data partition> <threshold>
 # e.g. bash tools/voc/dist_train_cotraining_2cps.sh 4 29873 1_16 0.0
 
+# we also provide a srun script for training on slurm cluster
+# e.g. bash tools/voc/srun_train_cotraining_2cps.sh 4 29873 1_16 0.0
 ```
 
 In order to run on different labeled data partitions or different datasets, please modify:
@@ -142,7 +162,7 @@ In order to run on different labeled data partitions or different datasets, plea
 ### Supervised Baseline
 
 Modify the py file to ``supervised.py`` in the script, and double the ``batch_size`` in the configuration file if you use the same number of GPUs as semi-supervised setting (no need to change ``lr``). 
-
+If you want to run supervised on DCT input domain, follow the above instructions to modify ``supervised_dct.py`` in the script, everything is the same except for the input domain is changed.
 
 ## Citation
 If you find this project useful, please consider citing:

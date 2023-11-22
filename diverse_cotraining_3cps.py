@@ -1,4 +1,3 @@
-
 import argparse
 import logging
 import os
@@ -29,11 +28,11 @@ parser.add_argument('--config3', type=str, required=True)
 parser.add_argument('--labeled-id-path', type=str, required=True)
 parser.add_argument('--unlabeled-id-path', type=str, required=True)
 parser.add_argument('--save-path', type=str, required=True)
-parser.add_argument('--local_rank', default=0, type=int)
+parser.add_argument('--local_rank', '--local-rank', default=0, type=int)
 parser.add_argument('--port', default=None, type=int)
 parser.add_argument('--thr', default=0.95, type=float)
 parser.add_argument('--uw', default=1.0, type=float)
-
+parser.add_argument('--amp', action="store_true")
 
 def main():
     args = parser.parse_args()
@@ -129,7 +128,9 @@ def main():
 
     total_iters = len(trainloader_u) * cfg['epochs']
     previous_best1, previous_best2, previous_best3 = 0.0, 0.0, 0.0
-
+    scaler1 = torch.cuda.amp.GradScaler()
+    scaler2 = torch.cuda.amp.GradScaler()
+    scaler3 = torch.cuda.amp.GradScaler()
     for epoch in range(cfg['epochs']):
         if rank == 0:
             logger.info('===========> Epoch: {:}, LR: {:.4f}, '
@@ -174,89 +175,110 @@ def main():
             model3.train()
 
             num_lb, num_ulb = img_x.shape[0], img_u_w.shape[0]
+            with torch.cuda.amp.autocast(enabled=args.amp):
+                pred_x1, pred_u_w1 = model1(torch.cat((img_x, img_u_w))).split([num_lb, num_ulb])
+                pred_u_s1 = model1(img_u_s)
+                pred_x2, pred_u_w2 = model2(torch.cat((img_x_dct, img_u_w_dct)), img_shape[0]).split([num_lb, num_ulb])
+                pred_u_s2 = model2(img_u_s_dct, img_shape[0])
+                pred_x3, pred_u_w3 = model3(torch.cat((img_x, img_u_w))).split([num_lb, num_ulb])
+                pred_u_s3 = model3(img_u_s)
 
-            pred_x1, pred_u_w1 = model1(torch.cat((img_x, img_u_w))).split([num_lb, num_ulb])
-            pred_u_s1 = model1(img_u_s)
-            pred_x2, pred_u_w2 = model2(torch.cat((img_x_dct, img_u_w_dct)), img_shape[0]).split([num_lb, num_ulb])
-            pred_u_s2 = model2(img_u_s_dct, img_shape[0])
-            pred_x3, pred_u_w3 = model3(torch.cat((img_x, img_u_w))).split([num_lb, num_ulb])
-            pred_u_s3 = model3(img_u_s)
+                pred_u_w1 = pred_u_w1.detach() # bs, c, h, w
+                conf_u_w1 = pred_u_w1.softmax(dim=1).max(dim=1)[0]
+                mask_u_w1 = pred_u_w1.argmax(dim=1) # bs, h, w
 
-            pred_u_w1 = pred_u_w1.detach() # bs, c, h, w
-            conf_u_w1 = pred_u_w1.softmax(dim=1).max(dim=1)[0]
-            mask_u_w1 = pred_u_w1.argmax(dim=1) # bs, h, w
+                pred_u_w2 = pred_u_w2.detach() # bs, c, h, w
+                conf_u_w2 = pred_u_w2.softmax(dim=1).max(dim=1)[0] # bs, h, w
+                mask_u_w2 = pred_u_w2.argmax(dim=1) # bs, h, w
+                
+                pred_u_w3 = pred_u_w3.detach() # bs, c, h, w
+                conf_u_w3 = pred_u_w3.softmax(dim=1).max(dim=1)[0] # bs, h, w
+                mask_u_w3 = pred_u_w3.argmax(dim=1) # bs, h, w
 
-            pred_u_w2 = pred_u_w2.detach() # bs, c, h, w
-            conf_u_w2 = pred_u_w2.softmax(dim=1).max(dim=1)[0] # bs, h, w
-            mask_u_w2 = pred_u_w2.argmax(dim=1) # bs, h, w
-            
-            pred_u_w3 = pred_u_w3.detach() # bs, c, h, w
-            conf_u_w3 = pred_u_w3.softmax(dim=1).max(dim=1)[0] # bs, h, w
-            mask_u_w3 = pred_u_w3.argmax(dim=1) # bs, h, w
+                mask_u_w_cutmixed1, conf_u_w_cutmixed1 = mask_u_w1.clone(), conf_u_w1.clone()
+                mask_u_w_cutmixed2, conf_u_w_cutmixed2 = mask_u_w2.clone(), conf_u_w2.clone()
+                mask_u_w_cutmixed3, conf_u_w_cutmixed3 = mask_u_w3.clone(), conf_u_w3.clone()
+                ignore_mask_cutmixed1, ignore_mask_cutmixed2, ignore_mask_cutmixed3 = \
+                    ignore_mask.clone(), ignore_mask.clone(), ignore_mask.clone()
 
-            mask_u_w_cutmixed1, conf_u_w_cutmixed1 = mask_u_w1.clone(), conf_u_w1.clone()
-            mask_u_w_cutmixed2, conf_u_w_cutmixed2 = mask_u_w2.clone(), conf_u_w2.clone()
-            mask_u_w_cutmixed3, conf_u_w_cutmixed3 = mask_u_w3.clone(), conf_u_w3.clone()
-            ignore_mask_cutmixed1, ignore_mask_cutmixed2, ignore_mask_cutmixed3 = \
-                ignore_mask.clone(), ignore_mask.clone(), ignore_mask.clone()
+                mask_u_w_cutmixed1[cutmix_box == 1] = mask_u_w1.clone()[index][cutmix_box == 1]
+                conf_u_w_cutmixed1[cutmix_box == 1] = conf_u_w1.clone()[index][cutmix_box == 1]
+                mask_u_w_cutmixed2[cutmix_box == 1] = mask_u_w2.clone()[index][cutmix_box == 1]
+                conf_u_w_cutmixed2[cutmix_box == 1] = conf_u_w2.clone()[index][cutmix_box == 1]
+                mask_u_w_cutmixed3[cutmix_box == 1] = mask_u_w3.clone()[index][cutmix_box == 1]
+                conf_u_w_cutmixed3[cutmix_box == 1] = conf_u_w3.clone()[index][cutmix_box == 1]
+                
+                ignore_mask_cutmixed1[cutmix_box == 1] = ignore_mask.clone()[index][cutmix_box == 1]
+                ignore_mask_cutmixed2[cutmix_box == 1] = ignore_mask.clone()[index][cutmix_box == 1]
+                ignore_mask_cutmixed3[cutmix_box == 1] = ignore_mask.clone()[index][cutmix_box == 1]
 
-            mask_u_w_cutmixed1[cutmix_box == 1] = mask_u_w1.clone()[index][cutmix_box == 1]
-            conf_u_w_cutmixed1[cutmix_box == 1] = conf_u_w1.clone()[index][cutmix_box == 1]
-            mask_u_w_cutmixed2[cutmix_box == 1] = mask_u_w2.clone()[index][cutmix_box == 1]
-            conf_u_w_cutmixed2[cutmix_box == 1] = conf_u_w2.clone()[index][cutmix_box == 1]
-            mask_u_w_cutmixed3[cutmix_box == 1] = mask_u_w3.clone()[index][cutmix_box == 1]
-            conf_u_w_cutmixed3[cutmix_box == 1] = conf_u_w3.clone()[index][cutmix_box == 1]
-            
-            ignore_mask_cutmixed1[cutmix_box == 1] = ignore_mask.clone()[index][cutmix_box == 1]
-            ignore_mask_cutmixed2[cutmix_box == 1] = ignore_mask.clone()[index][cutmix_box == 1]
-            ignore_mask_cutmixed3[cutmix_box == 1] = ignore_mask.clone()[index][cutmix_box == 1]
+                loss_x1 = criterion_l(pred_x1, mask_x)
+                loss_x2 = criterion_l(pred_x2, mask_x)
+                loss_x3 = criterion_l(pred_x3, mask_x)
 
-            loss_x1 = criterion_l(pred_x1, mask_x)
-            loss_x2 = criterion_l(pred_x2, mask_x)
-            loss_x3 = criterion_l(pred_x3, mask_x)
+                
+                # supervise model1 with pred2 and pred3
+                loss_u_s11 = criterion_u(pred_u_s1, mask_u_w_cutmixed2)
+                loss_u_s11 = loss_u_s11 * ((conf_u_w_cutmixed2 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
+                loss_u_s11 = torch.sum(loss_u_s11) / torch.sum(ignore_mask_cutmixed1 != 255).item()
+                
+                loss_u_s12 = criterion_u(pred_u_s1, mask_u_w_cutmixed3)
+                loss_u_s12 = loss_u_s12 * ((conf_u_w_cutmixed3 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
+                loss_u_s12 = torch.sum(loss_u_s12) / torch.sum(ignore_mask_cutmixed1 != 255).item()
+                loss_u_s1 = (loss_u_s11 + loss_u_s12) / 2.0
 
-            
-            # supervise model1 with pred2 and pred3
-            loss_u_s11 = criterion_u(pred_u_s1, mask_u_w_cutmixed2)
-            loss_u_s11 = loss_u_s11 * ((conf_u_w_cutmixed2 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
-            loss_u_s11 = torch.sum(loss_u_s11) / torch.sum(ignore_mask_cutmixed1 != 255).item()
-            
-            loss_u_s12 = criterion_u(pred_u_s1, mask_u_w_cutmixed3)
-            loss_u_s12 = loss_u_s12 * ((conf_u_w_cutmixed3 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
-            loss_u_s12 = torch.sum(loss_u_s12) / torch.sum(ignore_mask_cutmixed1 != 255).item()
-            loss_u_s1 = (loss_u_s11 + loss_u_s12) / 2.0
-
-            # supervise model2 with pred1 and pred3
-            loss_u_s21 = criterion_u(pred_u_s2, mask_u_w_cutmixed1)
-            loss_u_s21 = loss_u_s21 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed2 != 255))
-            loss_u_s21 = torch.sum(loss_u_s21) / torch.sum(ignore_mask_cutmixed2 != 255).item()
-            
-            loss_u_s22 = criterion_u(pred_u_s2, mask_u_w_cutmixed3)
-            loss_u_s22 = loss_u_s22 * ((conf_u_w_cutmixed3 >= cfg['conf_thresh']) & (ignore_mask_cutmixed2 != 255))
-            loss_u_s22 = torch.sum(loss_u_s22) / torch.sum(ignore_mask_cutmixed2 != 255).item()
-            loss_u_s2 = (loss_u_s21 + loss_u_s22) / 2.0
-            
-            # supervise model3 with pred1 and pred2
-            loss_u_s31 = criterion_u(pred_u_s3, mask_u_w_cutmixed1)
-            loss_u_s31 = loss_u_s31 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed3 != 255))
-            loss_u_s31 = torch.sum(loss_u_s31) / torch.sum(ignore_mask_cutmixed3 != 255).item()
-            
-            loss_u_s32 = criterion_u(pred_u_s3, mask_u_w_cutmixed2)
-            loss_u_s32 = loss_u_s32 * ((mask_u_w_cutmixed2 >= cfg['conf_thresh']) & (ignore_mask_cutmixed3 != 255))
-            loss_u_s32 = torch.sum(loss_u_s32) / torch.sum(ignore_mask_cutmixed3 != 255).item()
-            loss_u_s3 = (loss_u_s31 + loss_u_s32) / 2.0
-            
-            loss = (loss_x1 + loss_x2 + loss_x3) / 3.0 + args.uw * ((loss_u_s1 + loss_u_s2 + loss_u_s3) / 3.0)
-
+                # supervise model2 with pred1 and pred3
+                loss_u_s21 = criterion_u(pred_u_s2, mask_u_w_cutmixed1)
+                loss_u_s21 = loss_u_s21 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed2 != 255))
+                loss_u_s21 = torch.sum(loss_u_s21) / torch.sum(ignore_mask_cutmixed2 != 255).item()
+                
+                loss_u_s22 = criterion_u(pred_u_s2, mask_u_w_cutmixed3)
+                loss_u_s22 = loss_u_s22 * ((conf_u_w_cutmixed3 >= cfg['conf_thresh']) & (ignore_mask_cutmixed2 != 255))
+                loss_u_s22 = torch.sum(loss_u_s22) / torch.sum(ignore_mask_cutmixed2 != 255).item()
+                loss_u_s2 = (loss_u_s21 + loss_u_s22) / 2.0
+                
+                # supervise model3 with pred1 and pred2
+                loss_u_s31 = criterion_u(pred_u_s3, mask_u_w_cutmixed1)
+                loss_u_s31 = loss_u_s31 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed3 != 255))
+                loss_u_s31 = torch.sum(loss_u_s31) / torch.sum(ignore_mask_cutmixed3 != 255).item()
+                
+                loss_u_s32 = criterion_u(pred_u_s3, mask_u_w_cutmixed2)
+                loss_u_s32 = loss_u_s32 * ((mask_u_w_cutmixed2 >= cfg['conf_thresh']) & (ignore_mask_cutmixed3 != 255))
+                loss_u_s32 = torch.sum(loss_u_s32) / torch.sum(ignore_mask_cutmixed3 != 255).item()
+                loss_u_s3 = (loss_u_s31 + loss_u_s32) / 2.0
+                
+                loss1 = loss_x1 + args.uw * loss_u_s1
+                loss2 = loss_x2 + args.uw * loss_u_s2
+                loss3 = loss_x3 + args.uw * loss_u_s3
+                
             torch.distributed.barrier()
 
             optimizer1.zero_grad()
             optimizer2.zero_grad()
             optimizer3.zero_grad()
-            loss.backward()
-            optimizer1.step()
-            optimizer2.step()
-            optimizer3.step()
+            
+            if args.amp:
+                loss1 = scaler1.scale(loss1)
+                loss2 = scaler2.scale(loss2)
+                loss3 = scaler3.scale(loss3)
+                loss = (loss1 + loss2 + loss3) / 3
+                
+                loss.backward()
+                
+                scaler1.step(optimizer1)
+                scaler2.step(optimizer2)
+                scaler3.step(optimizer3)
+                
+                scaler1.update()
+                scaler2.update()
+                scaler3.update()
+            else:
+                loss = (loss1 + loss2 + loss3) / 3
+                
+                loss.backward()
+                optimizer1.step()
+                optimizer2.step()
+                optimizer3.step()
 
             total_loss_x1 += loss_x1.item()
             total_loss_s1 += loss_u_s1.item()
@@ -300,7 +322,6 @@ def main():
         torch.cuda.empty_cache()
 
         if cfg['dataset'] == 'cityscapes':
-            # eval_mode = 'center_crop' if epoch < cfg['epochs'] - 20 else 'sliding_window'
             eval_mode = 'sliding_window'
         else:
             eval_mode = 'original'
@@ -309,8 +330,6 @@ def main():
         mIOU3, iou_class3 = evaluate(model3, valloader, eval_mode, cfg3)
 
         if rank == 0:
-            # iou_class1 = [(cls_idx, iou) for cls_idx, iou in enumerate(iou_class1)]
-            # iou_class1.sort(key=lambda x:x[1])
             for (cls_idx, iou) in enumerate(iou_class1):
                 logger.info('***** Evaluation ***** >>>> Class [{:} {:}] IoU1: {:.2f}, '
                             'IoU2: {:.2f}, IoU3: {:.2f},'.format(cls_idx, CLASSES[cfg['dataset']][cls_idx], iou, iou_class2[cls_idx], iou_class3[cls_idx]))
@@ -327,23 +346,21 @@ def main():
         
         if mIOU2 > previous_best2 and rank == 0:
             if previous_best2 != 0:
-                pre_path = os.path.join(args.save_path, 'm2_%s_%.2f.pth' % (cfg2['backbone'], previous_best2))
+                pre_path = os.path.join(args.save_path, 'm2_%s_%.2f.pth' % (cfg['backbone'], previous_best2))
                 if os.path.exists(pre_path):
                     os.remove(pre_path)
             previous_best2 = mIOU2
             torch.save(model2.module.state_dict(),
-                       os.path.join(args.save_path, 'm2_%s_%.2f.pth' % (cfg2['backbone'], mIOU2)))
+                       os.path.join(args.save_path, 'm2_%s_%.2f.pth' % (cfg['backbone'], mIOU2)))
         
         if mIOU3 > previous_best3 and rank == 0:
             if previous_best3 != 0:
-                pre_path = os.path.join(args.save_path, 'm3_%s_%.2f.pth' % (cfg3['backbone'], previous_best3))
+                pre_path = os.path.join(args.save_path, 'm3_%s_%.2f.pth' % (cfg['backbone'], previous_best3))
                 if os.path.exists(pre_path):
                     os.remove(pre_path)
             previous_best3 = mIOU3
             torch.save(model3.module.state_dict(),
-                       os.path.join(args.save_path, 'm3_%s_%.2f.pth' % (cfg3['backbone'], mIOU3)))
-        # previous_best1 = max(previous_best1, mIOU1)
-        # previous_best2 = max(previous_best2, mIOU2)
+                       os.path.join(args.save_path, 'm3_%s_%.2f.pth' % (cfg['backbone'], mIOU3)))
 
 if __name__ == '__main__':
     main()
