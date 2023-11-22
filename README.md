@@ -94,7 +94,7 @@ pip install torch torchvision torchaudio
 pip install -r requirements.txt
 ```
 
-We use implementation of SegFormer from mmseg, so installation of mmcv and mmsegmentation libraries is needed
+We use implementation of SegFormer from mmsegmentation, so installation of mmcv and mmsegmentation libraries is needed
 
 ```bash
 pip install openmim
@@ -103,12 +103,14 @@ pip install mmsegmentation
 ```
 
 Proprosessing of DCT domain requires jpeg2dct and PyTurboJPEG libraries.
+
 Before installing jpeg2dct, first install either [libjpeg](https://libjpeg.sourceforge.net/) or [libjpeg-turbo](https://libjpeg-turbo.org/) library. 
 
 ```bash
 apt install libjpeg-turbo
 pip install jpeg2dct PyTurboJPEG
 ```
+
 For more details regarding the installation of jpeg2dct, we refer to [jpeg2dct](https://github.com/uber-research/jpeg2dct).
 We also refer to [DCTNet](https://github.com/kaixu-zen/DCTNet) for more details of DCT transform.
 
@@ -125,7 +127,7 @@ We provide the pretrain as followed:
     └── resnet101_dct.pth
 ```
 
-**Note**: the ResNet variants all use official weights and we have pretrained dct resnet with comparable performance as ResNet couterparts. More details can be found in our paper.
+**Note**: The ResNet variants all use official weights and we have pretrained DCT ResNet with comparable performance as ResNet couterparts. More details can be found in our paper.
 ### Dataset:
 
 - Pascal: [JPEGImages](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar) | [SegmentationClass](https://drive.google.com/file/d/1ikrDlsai5QSf2GiSUR3f8PZUzyTubcuF/view?usp=sharing)
@@ -162,6 +164,7 @@ In order to run on different labeled data partitions or different datasets, plea
 ### Supervised Baseline
 
 Modify the py file to ``supervised.py`` in the script, and double the ``batch_size`` in the configuration file if you use the same number of GPUs as semi-supervised setting (no need to change ``lr``). 
+
 If you want to run supervised on DCT input domain, follow the above instructions to modify ``supervised_dct.py`` in the script, everything is the same except for the input domain is changed.
 
 ## Citation
