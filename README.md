@@ -98,7 +98,7 @@ The code for DCT transform is already in the repo (libjpeg-turbo-2.0.3), thus no
 
 ### Pretrained Backbone:
 
-[ResNet-50](https://drive.google.com/file/d/1AuyE_rCUSwDpjMJHMPklXeKdZpdH1-6F/view?usp=sharing) | [ResNet-101](https://drive.google.com/file/d/13jNMOEYkqBC3CimlSSw-sWRHVZEeROmK/view?usp=sharing) | [ResNet-50-dct](https://drive.google.com/file/d/1WTnbvLHRUYgXOW0wae91fAwU3C9lAiBA/view?usp=sharing) | [ResNet-101-dct](https://drive.google.com/file/d/1pFIGmwaPAobPUiFV7sQ_mWcp4fBu1oxY/view?usp=sharing)
+[ResNet-50](https://drive.google.com/file/d/1-_U293pmtEt2NOba5cIbq98UTfgGwdZM/view?usp=drive_link) | [ResNet-101](https://drive.google.com/file/d/1-X_-Sa7uTq3xwlxAadi-QkPwGx7EIVHK/view?usp=drive_link) | [ResNet-50-dct](https://drive.google.com/file/d/1WTnbvLHRUYgXOW0wae91fAwU3C9lAiBA/view?usp=drive_link) | [ResNet-101-dct](https://drive.google.com/file/d/1pFIGmwaPAobPUiFV7sQ_mWcp4fBu1oxY/view?usp=drive_link)
 
 ```
 ├── ./pretrained
