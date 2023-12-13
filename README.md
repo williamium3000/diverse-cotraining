@@ -80,8 +80,6 @@ Results are obtained by DeepLabv3+ with ResNet-50/101 and SegFormer-b2/b3 with r
 We release the training logs in [logs folder](logs/). 
 Training logs on CItyscapes dataset can be found in [logs/cityscapes](logs/cityscapes/).
 Training logs on VOC dataset can be found in [logs/voc](logs/voc).
-### Checkpoints
-We will release the checkpoints later.
 
 ## Getting Started
 
