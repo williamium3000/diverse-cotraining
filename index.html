@@ -53,6 +53,11 @@
       font-size: 1.1em;
       font-style: italic;
     }
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
   </style>
 
 <body>
@@ -278,26 +283,31 @@
                 <p class="paragraph add-top-padding">
                     We first show that all three techniques that promotes diversity and pseudo views lead to substantial performance improvement.
                 </p>
-                <div class="base-row add-large-top-padding">
-                    <img class="img" src="diverse5.png" style="max-width:800px; width: 50%"/>
-                </div>
-                <div class="base-row add-large-top-padding">
-                    <img class="img" src="diverse6.png" style="max-width:800px; width: 50%" />
-                </div>
-                <div class="base-row add-large-top-padding">
-                    <img class="img" src="diverse7.png" style="max-width:800px; width: 50%" />
+                <div class="table-container">
+                    <div class="base-row add-large-top-padding" style="width: 50%">
+                        <img class="img" src="diverse5.png" style="width: 100%" />
+                    </div>
+                    <div class="base-row add-large-top-padding" style="width: 50%">
+                        <img class="img" src="diverse6.png" style="width: 100%" />
+                    </div>
+                    <div class="base-row add-large-top-padding" style="width: 50%">
+                        <img class="img" src="diverse7.png" style="width: 100%" />
+                    </div>
                 </div>
 
                 <p class="paragraph add-top-padding">
-                    We then show improved state-of-the-arts (SOTA) performance on two datasets across various settings and architectures.
+                    Diverse Cotraining demonstrates state-of-the-arts (SOTA) performance on two datasets across various settings and architectures.
                 </p>
+                
+                <div class="table-container">
+                    <div class="base-row add-large-top-padding" style="width: 50%">
+                        <img class="img" src="diverse8.png" style="width: 100%" />
+                    </div>
+                    <div class="base-row add-large-top-padding" style="width: 50%">
+                        <img class="img" src="diverse9.png" style="width: 100%" />
+                    </div>
+                </div>
 
-                <div class="base-row add-large-top-padding">
-                    <img class="img" src="diverse8.png" style="max-width:800px; width: 50%"/>
-                </div>
-                <div class="base-row add-large-top-padding">
-                    <img class="img" src="diverse9.png" style="max-width:800px; width: 50%" />
-                </div>
                 <div class="base-row add-large-top-padding">
                     <img class="img" src="diverse10.png" style="max-width:800px; width: 50%" />
                 </div>
