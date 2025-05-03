@@ -1,0 +1,351 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Diverse Cotraining Makes Strong Semi-Supervised Segmentor</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta content="Diverse Cotraining Makes Strong Semi-Supervised Segmentor" name="description" />
+    <meta content="Diverse Cotraining Makes Strong Semi-Supervised Segmentor" property="og:title" />
+    <meta content="Diverse Cotraining Makes Strong Semi-Supervised Segmentor" property="og:description" />
+    <meta content="https://crossmae.github.io/crossmae2.jpg" property="og:image" />
+    <meta content="Diverse Cotraining Makes Strong Semi-Supervised Segmentor" property="twitter:title" />
+    <meta content="Diverse Cotraining Makes Strong Semi-Supervised Segmentor" property="twitter:description" />
+    <meta content="https://crossmae.github.io/crossmae2.jpg" property="twitter:image" />
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap"
+        rel="stylesheet">
+    <link href="style.css?v=v2" rel="stylesheet" type="text/css" />
+</head>
+
+<style>
+    .theorem {
+      border: 1px solid #ddd;
+      padding: 1em;
+      margin: 1.5em 0;
+      background: #f9f9f9;
+  
+      /* 右对齐 + 字体放大 + 斜体 */
+      text-align: left;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+    .theorem-title {
+      font-weight: bold;
+      margin-bottom: 0.5em;
+  
+      /* 标题稍微更大一些，也斜体 */
+      font-size: 1.3em;
+      font-style: italic;
+    }
+    .equation {
+      text-align: left;
+      margin: 0.75em 0;
+  
+      /* 公式字体也跟随放大和斜体 */
+      font-size: 1.1em;
+      font-style: italic;
+    }
+  </style>
+
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="title-row">
+                <h1 class="title main-title"
+                    style="font-weight: 700; font-size: 50px; font-family: 'Varela Round',sans-serif; margin: 0">
+                    Diverse Cotraining</h1>
+                <h1 class="title main-title"> Makes Strong Semi-Supervised Segmentor</h1>
+            </div>
+            <!-- <div class="base-row author-row">
+                <div class="base-col author-col1">
+                    <a href="https://williamium3000.github.io/" target="_blank" class="author-text">Yijiang Li</a><sup>1†</sup>
+                </div>
+                <div class="base-col author-col1">
+                    <a href="https://scholar.google.com/citations?user=q4lnWaoAAAAJ&hl=en" target="_blank" class="author-text">Xinjiang Wang</a><sup>2</sup>
+                </div>
+                <div class="base-col author-col1">
+                    <a href="https://liheyoung.github.io/" target="_blank" class="author-text">Lihe Yang</a><sup>3†</sup>
+                </div>
+
+                <div class="base-col author-col1">
+                    <a href="https://lyttonfeng.github.io/" target="_blank" class="author-text">Litong Feng</a><sup>2</sup>
+                </div>
+                
+            </div>
+            <div class="base-row author-row">
+               
+                <div class="base-col author-col1">
+                    <a href="https://www.statfe.com/" target="_blank" class="author-text">Wayne Zhang</a><sup>2</sup>
+                </div>
+                <div class="base-col author-col1">
+                    <a href="https://openreview.net/profile?id=~Ying_Gao1" target="_blank" class="author-text">Ying Gao</a><sup>4</sup>
+                </div>
+            </div> -->
+
+            <div class="author-wrapper">
+                <div class="author-row-flex row-gap-25">
+                  <div class="author-col">
+                    <a href="https://williamium3000.github.io/" target="_blank" class="author-text">Yijiang Li</a><sup>1†</sup>
+                  </div>
+                  <div class="author-col">
+                    <a href="https://scholar.google.com/citations?user=q4lnWaoAAAAJ&hl=en" target="_blank" class="author-text">Xinjiang Wang</a><sup>2</sup>
+                  </div>
+                  <div class="author-col">
+                    <a href="https://liheyoung.github.io/" target="_blank" class="author-text">Lihe Yang</a><sup>3†</sup>
+                  </div>
+                  <div class="author-col">
+                    <a href="https://lyttonfeng.github.io/" target="_blank" class="author-text">Litong Feng</a><sup>2</sup>
+                  </div>
+                </div>
+              
+                <div class="author-row-flex row-gap-40">
+                  <div class="author-col">
+                    <a href="https://www.statfe.com/" target="_blank" class="author-text">Wayne Zhang</a><sup>2</sup>
+                  </div>
+                  <div class="author-col">
+                    <a href="https://openreview.net/profile?id=~Ying_Gao1" target="_blank" class="author-text">Ying Gao</a><sup>4</sup>
+                  </div>
+                </div>
+              </div>
+              
+
+              
+            <!-- <div class="base-row affiliation-row">
+                <div class="base-col affiliation-col">
+                    <sup>1</sup>Johns Hopkins University
+                </div>
+                <div class="base-col affiliation-col">
+                    <sup>2</sup>SenseTime Research
+                </div>
+                <div class="base-col affiliation-col">
+                    <sup>3</sup>The University of Hong Kong
+                </div>
+                <div class="base-col affiliation-col">
+                    <sup>4</sup> South China University of Technology
+                </div>
+                <div class="base-col affiliation-col"><sup>†</sup>Work done during internship at SenseTime</div>
+            </div> -->
+
+            <div class="affiliation-grid">
+                <div class="affiliation-item"><sup>1</sup> Johns Hopkins University</div>
+                <div class="affiliation-item"><sup>2</sup> SenseTime Research</div>
+                <div class="affiliation-item"><sup>3</sup> The University of Hong Kong</div>
+                <div class="affiliation-item"><sup>4</sup> South China University of Technology</div>
+                <div class="affiliation-item"><sup>†</sup> Work done during internship at SenseTime</div>
+              </div>
+              
+                         
+
+            <div class="link-labels base-row" style="max-width: 500px">
+                <div class="base-col icon-col"><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Li_Diverse_Cotraining_Makes_Strong_Semi-Supervised_Segmentor_ICCV_2023_paper.pdf" target="_blank"
+                        class="link-block">
+                        <i class="fa fas fa-file-text main-icon" style="font-size: 50px"></i>
+                    </a></div>
+                <div class="base-col icon-col"><a href="https://github.com/williamium3000/diverse-cotraining" class="link-block">
+                        <i class="fa fa-github main-icon" style="font-size: 55px"></i>
+                    </a></div>
+                <div class="base-col icon-col"><a href="#citation" class="link-block">
+                        <i class="fa fa-graduation-cap main-icon" style="font-size: 55px"></i>
+                    </a></div>
+            </div>
+            <div class="link-labels base-row" style="max-width: 500px">
+                <div class="base-col icon-col"><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Li_Diverse_Cotraining_Makes_Strong_Semi-Supervised_Segmentor_ICCV_2023_paper.pdf" target="_blank"
+                        class="no-underline">
+                        <strong class="link-labels-text">Paper</strong></a>
+                </div>
+                <div class="base-col icon-col"><a href="https://github.com/williamium3000/diverse-cotraining" class="no-underline">
+                        <strong class="link-labels-text">Code</strong></a>
+                </div>
+                <div class="base-col icon-col"><a href="#citation" class="no-underline">
+                        <strong class="link-labels-text">Citation</strong></a>
+                </div>
+            </div>
+
+            
+            <h1 class="tldr">
+                <b>TL;DR</b>: Co-training in Semi-supervised Segmentation requires diverse views of the data. Diverse-Cotraining achieves this by promoting diversity by different input domains, diverse architectures, and distinct strong augmentations.
+            </h1>
+
+            <div class="base-row add-top-padding">
+                <div class="base-row add-top-padding">
+                    <img class="img" src="diverse_overview.png" />
+                </div>
+                <h1 class="title">Overview</h1>
+                <p class="paragraph">
+
+                    We revisit the core assumption that
+                    supports co-training in Semi-supervised Segmentation: multiple compatible and conditionally independent views, and show that current co-training models are tightly coupled together leading to sub-optimal performance.
+                    We present <b>Diverse Cotraining</b> that promotes diversity by different input domains, diverse architectures, and distinct strong augmentations, leadng to SOTA performance.
+                </p>
+            </div>
+            <div class="base-row add-large-top-padding">
+                <h1 class="title">Generalization Bound with Homogenization</h1>
+                <p class="paragraph add-top-padding">
+                    We first revisit the assumptions behind co-training: two or multiple independent views compatible with the target function.
+                    By deriving the generalization upper bound of Co-training,
+                    we theoretically show that the homogenization of networks
+                    accounts for the generalization error of Co-training methods. 
+                </p>
+
+                <div class="theorem">
+                    <div class="theorem-title">Theorem 1.</div>
+                    <p>
+                      Given hypothesis class \(\mathcal{H}\) and labeled data set \(D_{l}\) of size \(l\) that are sufficient to learn an initial segmentor \(f_i^0\) with an upper bound \(b_i^0\) on the generalization error (with probability \(\delta\), i.e.  
+                      \(l \ge \max\{\tfrac1{b_i^0}\ln\tfrac{|\mathcal{H}|}{\delta}\}\)), we then train \(f_i^0\) by ERM on the union of labeled and unlabeled set \(\sigma^i\), where pseudo-labels come from the other model \(f_{3-i}^0\).  Then we have
+                    </p>
+                    <p class="equation">
+                      \[
+                        \Pr\bigl[d(f_i^k, f^*) \ge b_i^k\bigr] \;\le\; \delta
+                      \]
+                    </p>
+                    <p>
+                      provided 
+                      \(l\,b_i^0 \le e\,\sqrt[M]{M!} - M\), 
+                      where \(M = u\,b_{3-i}^0\), and \( b_i^k = \max\!\Bigl\{\tfrac{l\,b_i^0 + u\,b_{3-i}^0 - u\,d(f_{3-i}^{\,k-1},f_i^k)}{l},\;0\Bigr\}  \).
+                    </p>
+                  </div>
+                  <p class="paragraph add-top-padding">
+                    Theorem 1 shows that the bigger the difference between the two models \( f_{3-i}^{k-1}\) and \(f_{i}^{k} \), the smaller the upper bound of the generalization error. Thus we can conclude Remark 1.
+                    </p>
+
+                  <div class="theorem">
+                    <div class="theorem-title">Remark 1.</div>
+                    <p>
+                        Homogenization negatively impacts the generalization ability of the Co-training method leading to sub-optimal performance.
+                    </p>
+                  </div>
+
+                <p class="paragraph add-top-padding">
+                    With the condition that the difference between the two models is large enough \(d(f_{3-i}^{k-1}, f_{i}^{k}) \ge b_{3-i}^0 \), 
+                      we can see that the larger the \( u \) the smaller the upper bound of the generalization error. Then we have Remark 2
+                </p>
+
+
+                <div class="theorem">
+                    <div class="theorem-title">Remark 2.</div>
+                    <p>
+                        Given a large difference between the two models, more unlabeled data decreases the generalization error of Co-training.
+                    </p>
+                  </div>
+                <p class="paragraph add-top-padding">
+                  This remark is consistent with empirical results that more unlabeled data leads to better performance. Further, with this remark, we provide theoretical guarantees for strong augmentations used in our method.
+                </p>
+            </div>
+            <div class="base-row add-large-top-padding">
+                <h1 class="title">Empirical Evidence</h1>
+                <div class="base-row add-top-padding">
+                    <img class="img" src="diverse1.png" />
+                </div>
+                <p class="paragraph add-top-padding">
+                    Given the statement that homogenization negatively impacts performance, we now investigate the existing Co-training methods. As shown in the below figure (Figure 1 of the paper), we summarize two co-training paradigms other than CPS (b), i.e. co-training with cross heads and shared backbone (c) and n-CPS (d) which leverages multiple models to perform co-training.
+                    As shown in the above figure (Figure 3 of the paper), we can observe that all three paradigms have a severer homogenization issue. We also provide rigorous analysis in logits and prediction space with L2 distance and KL Divergence demonstrating similar phenomena in Appendix B.
+                </p>
+                <div class="base-row add-top-padding">
+                    <img class="img" src="diverse2.png" style="max-width:60%; height:auto;"/>
+                </div>
+                <p class="paragraph add-top-padding">
+                    We further validate our arguments with empirical performance of these models. As shown in the below table (Table 1 of the paer), 
+                    we observe that <b>less similar models bring performance benefits </b>, i.e. co-training outperforms the other two consistently over all settings.
+                </p>
+                <div class="base-row add-top-padding">
+                    <img class="img" src="diverse3.png" style="max-width:50%; height:auto;" />
+                </div>
+            </div>
+
+
+
+            <div class="base-row add-top-padding">
+                <h1 class="title">Diverse Co-training</h1>
+                <p class="paragraph">
+                    After analyzing the limitation of current co-training paradigms, we provide a comprehensive investigation of co-training to (i) promote the diversity between models and (ii) provide a relatively more independent pseudo view that better fits the assumption in the Co-training.
+                    We propose, Diverse Cotraining that incorperates (1) diverse input domains (DCT, RGB, HSV, etc) as pseudo views, (2)different augmentation to provide different views and (3) different architectures (ViT and CNN) for different inductive biases.
+                    We provide two variants of Diverse Co-training, termed by 2-cps ((e) of Figure 1) and 3-cps ((f) of Figure 1).
+                </p>
+                <div class="base-row add-top-padding">
+                    <img class="img" src="diverse4.png"/>
+                </div>
+            </div>
+            <div class="base-row add-top-padding">
+                <h1 class="title">Results</h1>
+                <p class="paragraph add-top-padding">
+                    We first show that all three techniques that promotes diversity and pseudo views lead to substantial performance improvement.
+                </p>
+                <div class="base-row add-large-top-padding">
+                    <img class="img" src="diverse5.png" style="max-width:800px; width: 50%"/>
+                </div>
+                <div class="base-row add-large-top-padding">
+                    <img class="img" src="diverse6.png" style="max-width:800px; width: 50%" />
+                </div>
+                <div class="base-row add-large-top-padding">
+                    <img class="img" src="diverse7.png" style="max-width:800px; width: 50%" />
+                </div>
+
+                <p class="paragraph add-top-padding">
+                    We then show improved state-of-the-arts (SOTA) performance on two datasets across various settings and architectures.
+                </p>
+
+                <div class="base-row add-large-top-padding">
+                    <img class="img" src="diverse8.png" style="max-width:800px; width: 50%"/>
+                </div>
+                <div class="base-row add-large-top-padding">
+                    <img class="img" src="diverse9.png" style="max-width:800px; width: 50%" />
+                </div>
+                <div class="base-row add-large-top-padding">
+                    <img class="img" src="diverse10.png" style="max-width:800px; width: 50%" />
+                </div>
+            </div>
+
+            <div class="base-row add-top-padding">
+                <h1 class="title">Qualitative Results</h1>
+                
+                <div class="base-row add-large-top-padding">
+                    <img class="img" src="diverse11.png" style="max-width:800px; width: 50%"/>
+                </div>
+                <p class="paragraph">
+                    <b>Example qualitative results from PASCAL VOC 2012.</b>
+                    (a) RGB input; (b) ground truth; (c) FixMatch; (d) Co-training
+                    baseline; (e) Diverse Co-training (ours). (c) and (d) use
+                    DeepLabv3+ with ResNet50 as the segmentation network while
+                    (e) uses DeepLabv3+ with ResNet50 and SegFormerb2 (with MLP
+                    head) as the two segmentation networks.
+                </p>
+            </div>
+            <!-- <div class="base-row add-large-padding">
+                <h1 class="title">Analysis</h1>
+                <div class="base-row add-top-padding">
+                    <img class="img" src="crossmae5.jpg" />
+                </div>
+                <p class="paragraph">
+                    We visualize the output of each decoder block. (a-b) Different decoder blocks play different roles in the reconstruction, with most details emerging at later decoder blocks, which confirms the motivation for inter-block attention. (c) Visualizations of inter-block attention shows that different decoder blocks indeed attend to feature from different encoder blocks, with later blocks focusing on earlier encoder features to achieve reconstruction.
+                </p>
+            </div> -->
+
+            <div class="citation add-large-top-padding">
+                <h1 id="citation">Citation</h1>
+                <p style="font-size: 16px">If you use this work or find it helpful, please consider citing our work.</p>
+                <pre id="codecell">
+                    @inproceedings{li2023diverse,
+                        title={Diverse Cotraining Makes Strong Semi-Supervised Segmentor},
+                        author={Li, Yijiang and Wang, Xinjiang and Yang, Lihe and Feng, Litong and Zhang, Wayne and Gao, Ying},
+                        booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+                        pages={16055--16067},
+                        year={2023}
+                      }
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <p class="credit">Credit: The design of this project page references the project pages of <a
+            href="https://www.matthewtancik.com/nerf">NeRF</a>, <a
+            href="https://github.com/DeepMotionEditing/DeepMotionEditing.github.io">DeepMotionEditing</a>, and <a
+            href="https://www.lerf.io/">LERF</a>.</p>
+</body>

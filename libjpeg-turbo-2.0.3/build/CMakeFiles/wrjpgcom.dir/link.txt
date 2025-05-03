@@ -1,1 +1,0 @@
-/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/wrjpgcom.dir/wrjpgcom.c.o  -o wrjpgcom -rdynamic -Wl,-rpath,:::::::: 

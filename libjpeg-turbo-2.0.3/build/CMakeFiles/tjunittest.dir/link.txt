@@ -1,1 +1,0 @@
-/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/tjunittest.dir/tjunittest.c.o CMakeFiles/tjunittest.dir/tjutil.c.o CMakeFiles/tjunittest.dir/md5/md5.c.o CMakeFiles/tjunittest.dir/md5/md5hl.c.o  -o tjunittest -rdynamic libturbojpeg.so.0.2.0 -Wl,-rpath,/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build 

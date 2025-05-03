@@ -1,1 +1,0 @@
-/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/tjbench.dir/tjbench.c.o CMakeFiles/tjbench.dir/tjutil.c.o  -o tjbench -rdynamic libturbojpeg.so.0.2.0 -lm -Wl,-rpath,/experiment/data/william/share/semi-seg/libjpeg-turbo-2.0.3/build: 
